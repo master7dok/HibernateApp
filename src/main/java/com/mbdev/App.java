@@ -18,11 +18,9 @@ public class App {
         try {
             session.beginTransaction();
 
-            List<Person> people = session.createQuery("FROM Person where name like 'T%'").getResultList();
+            session.createQuery("UPDATE  Person set name = 'Test' where age < 30").
+                    executeUpdate();
 
-            for (Person person : people) {
-                System.out.println(person);
-            }
             session.getTransaction().commit();
 
         } finally {
